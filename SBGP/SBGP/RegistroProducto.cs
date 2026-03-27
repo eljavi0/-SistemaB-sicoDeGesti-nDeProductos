@@ -47,6 +47,8 @@ namespace SBGP
 
                 formPrincipal.AgregarProducto(Nombre, Categoria, Precio, Stock); // Llama al método AgregarProducto del formulario principal para agregar el producto al DataGridView
 
+                MessageBox.Show("Producto registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 this.Close(); // Cierra el formulario de registro después de agregar el producto
             }
         }
