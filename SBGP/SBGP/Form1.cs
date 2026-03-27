@@ -38,5 +38,55 @@ namespace SBGP
             dataGridView1.Rows.Add(idActual, Nombre, Categoria, Precio, Stock); // Agrega una nueva fila al DataGridView con los datos del producto
             idActual++; // Incrementa el ID para el siguiente producto y asi no repetir el mismo ID en el DataGridView
         }
+
+        public void ActualizarProducto(int fila, string Nombre, string Categoria, string Precio, int Stock)
+        {
+            dataGridView1.Rows[fila].Cells[1].Value = Nombre;
+            dataGridView1.Rows[fila].Cells[2].Value = Categoria;
+            dataGridView1.Rows[fila].Cells[4].Value = Stock;
+            dataGridView1.Rows[fila].Cells[3].Value = Precio;
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un producto para editar");
+                return;
+            }
+            else if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un producto para editar");
+                return;
+            }
+
+            // ❗ Validar si es la fila vacía (nueva fila)
+            else if (dataGridView1.CurrentRow.IsNewRow)
+            {
+                MessageBox.Show("El registro seleccionado está vacío");
+                return;
+            }
+
+            // También puedes validar que tenga datos
+            else if (dataGridView1.CurrentRow.Cells[1].Value == null)
+            {
+                MessageBox.Show("El registro seleccionado está vacío");
+                return;
+            }
+
+            else// Obtener datos de la fila seleccionada
+            {
+                int fila = dataGridView1.CurrentRow.Index;
+
+                string Nombre = dataGridView1.Rows[fila].Cells[1].Value.ToString();
+                string Categoria = dataGridView1.Rows[fila].Cells[3].Value.ToString();
+                string Precio = dataGridView1.Rows[fila].Cells[2].Value.ToString();
+                int Stock = Convert.ToInt32(dataGridView1.Rows[fila].Cells[4].Value);
+
+                // Abrir FormEditar
+                FormEditar frm = new FormEditar(this, fila, Nombre, Categoria, Precio, Stock);
+                frm.ShowDialog();
+            }
+        }
     }
 }

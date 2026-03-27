@@ -66,5 +66,10 @@ namespace SBGP
                 e.Handled = true;
             }
         }
+
+        private void RegistroProducto_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -179,6 +179,7 @@
             this.Controls.Add(this.label1);
             this.Name = "RegistroProducto";
             this.Text = "RegistroProducto";
+            this.Load += new System.EventHandler(this.RegistroProducto_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
