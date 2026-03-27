@@ -47,5 +47,18 @@ namespace SBGP
 
             this.Close();
         }
+
+        private void txtStockProduc1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtStockProduc1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Evita que se ingresen caracteres no numéricos
+            }
+        }
     }
 }

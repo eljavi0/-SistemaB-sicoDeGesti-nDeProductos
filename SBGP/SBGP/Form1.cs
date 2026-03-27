@@ -88,5 +88,38 @@ namespace SBGP
                 frm.ShowDialog();
             }
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            // 1. Validar si hay fila seleccionada
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un producto para eliminar");
+                return;
+            }
+
+            // 2. Validar si es la fila vacía
+            if (dataGridView1.CurrentRow.IsNewRow)
+            {
+                MessageBox.Show("El registro seleccionado está vacío");
+                return;
+            }
+
+            // 3. Confirmación
+            DialogResult resultado = MessageBox.Show(
+                "¿Está seguro de eliminar este producto?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (resultado == DialogResult.No)
+                return;
+
+            // 4. Eliminar fila
+            dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
+
+            MessageBox.Show("Producto eliminado correctamente");
+        }
     }
 }

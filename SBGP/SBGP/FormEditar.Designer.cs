@@ -98,6 +98,8 @@
             this.txtStockProduc1.Name = "txtStockProduc1";
             this.txtStockProduc1.Size = new System.Drawing.Size(205, 20);
             this.txtStockProduc1.TabIndex = 7;
+            this.txtStockProduc1.TextChanged += new System.EventHandler(this.txtStockProduc1_TextChanged);
+            this.txtStockProduc1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStockProduc1_KeyPress);
             // 
             // txtPrecioProduc1
             // 
