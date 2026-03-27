@@ -16,6 +16,9 @@ namespace SBGP
         public Form1()
         {
             InitializeComponent();
+            comboBoxFiltro.Items.Add("Todas");
+            comboBoxFiltro.SelectedItem = "Todas"; // Todas queda seleccionada por defecto
+
         }
 
         private void btnSalir_Click(object sender, EventArgs e) // Evento del botón Salir para confirmar si el usuario desea salir de la aplicación
@@ -120,6 +123,39 @@ namespace SBGP
             dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
 
             MessageBox.Show("Producto eliminado correctamente");
+        }
+
+        public void AgregarCategoria(string categoria) // Método para agregar una categoría al ComboBox de filtro, se llama desde el formulario RegistroProducto cada vez que se registra un nuevo producto con una categoría diferente
+        {
+            if (!comboBoxFiltro.Items.Contains(categoria))
+            {
+                comboBoxFiltro.Items.Add(categoria);
+            }
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            comboBoxFiltro.SelectedItem = "Todas"; // Todas queda seleccionada por defecto
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string categoriaSeleccionada = comboBoxFiltro.SelectedItem.ToString();
+
+            foreach (DataGridViewRow fila in dataGridView1.Rows)
+            {
+                if (fila.IsNewRow) continue;
+
+                string categoriaFila = fila.Cells[2].Value.ToString();
+
+                if (categoriaSeleccionada == "Todas")
+                {
+                    fila.Visible = true;
+                }
+                else
+                {
+                    fila.Visible = (categoriaFila == categoriaSeleccionada);
+                }
+            }
         }
     }
 }

@@ -49,6 +49,8 @@ namespace SBGP
 
                 MessageBox.Show("Producto registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                formPrincipal.AgregarCategoria(Categoria);
+
                 this.Close(); // Cierra el formulario de registro después de agregar el producto
             }
         }

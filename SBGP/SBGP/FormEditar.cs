@@ -45,6 +45,8 @@ namespace SBGP
 
             formPrincipal.ActualizarProducto(filaIndex, Nombre, Categoria, Precio, Stock);
 
+            MessageBox.Show("Producto actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             this.Close();
         }
 
